@@ -73,3 +73,7 @@ function changeLanguage(current) {
         }
     }
 }
+
+function calculer(current) {
+
+}
