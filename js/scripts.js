@@ -119,7 +119,7 @@ function calculer() {
 
         function fade() {
             el.style.opacity = x;
-            x = x - 0.01;
+            x = x - 0.05;
             console.log(x);
 
             if (x >= 0) {
