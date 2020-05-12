@@ -61,6 +61,32 @@
     });
 })(jQuery); // End of use strict
 
+
+// values definitions
+let map = new Map();
+map.set("OL", "3");
+map.set("CI", "4");
+map.set("OR", "2");
+map.set("BA", "5");
+
+let mapName = new Map();
+mapName.set("OL", "Olives");
+mapName.set("CI", "Citrons");
+mapName.set("OR", "Oranges");
+mapName.set("BA", "Bananes");
+
+loadInfos();
+
+function loadInfos() {
+    var element = $("#second");
+
+    for (var key of map.keys()) {
+        console.log("key: " + key)
+        element.append("<option value=" + key + ">" + mapName.get(key) + " (" + map.get(key) + "€ / kilo)" + "</option>");
+    }
+}
+
+
 var language = "";
 
 function changeLanguage(current) {
@@ -74,6 +100,41 @@ function changeLanguage(current) {
     }
 }
 
-function calculer(current) {
+function calculer() {
+    let first = document.getElementById("premier").value;
+    let second = document.getElementById("second").value;
+    console.log(first, second);
 
+    if (isNaN(first)) {
+        console.log("erreur")
+        document.getElementById("errormessage").style.visibility = "visible";
+        document.getElementById("premier").value = "";
+
+        var el = document.getElementById("errormessage");
+        var x = 1;
+
+        setTimeout(function() {
+            fade();
+        }, 5000)
+
+        function fade() {
+            el.style.opacity = x;
+            x = x - 0.01;
+            console.log(x);
+
+            if (x >= 0) {
+                setTimeout(function() {
+                    fade();
+                }, 100)
+            }
+            return;
+        }
+        return;
+    }
+
+    let val = first * map.get(second);
+
+    console.log(val);
+
+    document.getElementById("value").innerHTML = val + "€"
 }

@@ -182,10 +182,13 @@
     <!-- Contact-->
     <section class="page-section" id="contact">
         <div class="container">
-            <form name="calcul" submit="calculer()">
-                <input type="text" placeholder="premier nombre" /> x <input type="text" placeholder="second nombre" />
+            <div id="errormessage" style="visibility: hidden;color: red;font-style: italic;font-weight: bold;">Veuillez rentrer des valeures correctes</div>
+            <form name="formcalculer">
+                <input id="premier" type="text" placeholder="Quantité (kg)" /> x <select id="second">
+                </select> =
+                <p id="value" style="display: inline;"></p>
             </form>
-            <button name="calculer">calculer</button>
+            <button name="calculer" onclick="calculer()">calculer</button>
         </div>
         <div class="container">
             <div class="row justify-content-center">
